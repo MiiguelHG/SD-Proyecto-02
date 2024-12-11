@@ -56,6 +56,70 @@ La API proporciona las siguientes funcionalidades:
 * Se utiliza Pydantic para validar los datos de entrada y asegurar que sean correctos y consistentes.
 
 
+## Endpoints
+
+A continuación se listan los endpoints disponibles en la API:
+
+**Alumnos:**
+
+* `POST /alumno`: Crea un nuevo alumno.
+* `GET /alumno`: Obtiene todos los alumnos.
+* `GET /alumno/{id}`: Obtiene un alumno por su ID.
+* `PUT /alumno/{id}`: Actualiza un alumno por su ID.
+* `DELETE /alumno/{id}`: Elimina un alumno por su ID.
+
+**Profesores:**
+
+* `POST /profesor`: Crea un nuevo profesor.
+* `GET /profesor`: Obtiene todos los profesores.
+* `GET /profesor/{id}`: Obtiene un profesor por su ID.
+* `PUT /profesor/{id}`: Actualiza un profesor por su ID.
+* `DELETE /profesor/{id}`: Elimina un profesor por su ID.
+
+**Materias:**
+
+* `POST /materia`: Crea una nueva materia.
+* `GET /materia`: Obtiene todas las materias.
+* `GET /materia/{id}`: Obtiene una materia por su ID.
+* `PUT /materia/{id}`: Actualiza una materia por su ID.
+* `DELETE /materia/{id}`: Elimina una materia por su ID.
+
+**Asignación de Materias a Profesores:**
+
+* `PUT /profesor_materia/{profesor_id}`: Asigna una materia a un profesor.
+* `GET /profesor_materia/{profesor_id}`: Obtiene las materias asignadas a un profesor.
+* `GET /profesor_materia/`: Obtiene todos los profesores con sus materias asignadas.
+
+
+**Inscripción de Alumnos a Materias:**
+
+* `POST /materia_alumno`: Inscribe un alumno en una materia.
+* `GET /materia_alumno/{materia_id}`: Obtiene los alumnos inscritos en una materia.
+* `GET /materia_alumno/`: Obtiene todas las materias con sus alumnos inscritos.
+
+**Calificaciones:**
+
+* `PUT /calificaciones/{alumno_id}/materia/{materia_id}`: Registra la calificación de un alumno en una materia.
+* `GET /calificaciones/{alumno_id}`: Obtiene las calificaciones de un alumno.
+* `GET /calificaciones/`: Obtiene todos los alumnos con sus calificaciones.
+
+**Autenticación:**
+
+* `POST /token`: Obtiene un token de acceso.
+
+
+## Implementación de Tecnologías
+
+* **FastAPI:** Se utiliza como framework principal para la creación de la API.  Proporciona un alto rendimiento, validación automática de datos y documentación interactiva con Swagger UI.
+
+* **MongoDB:**  Se utiliza Motor, un driver asíncrono para MongoDB, para interactuar con la base de datos.  Se definen diferentes colecciones para alumnos, profesores, materias,  relaciones entre alumnos y materias,  relaciones entre profesores y materias y usuarios.  
+
+* **AWS S3:** Se utiliza Boto3, el SDK de AWS para Python, para interactuar con el servicio S3. Las fotos de los alumnos se suben a un bucket específico y la URL del objeto se almacena en la base de datos.  Se implementan funciones para subir y eliminar objetos de S3.
+
+* **Pydantic:** Se utiliza para definir los esquemas de datos (modelos) que validan la entrada y salida de datos de la API. Esto asegura la consistencia y la integridad de los datos.
+
+* **Autenticación (OAuth2 y JWT):** Se implementa la autenticación mediante OAuth2 utilizando tokens JWT. El endpoint `/token` permite a los usuarios obtener un token de acceso proporcionando sus credenciales.  FastAPI's `OAuth2PasswordBearer` y `OAuth2PasswordRequestForm` se utilizan para gestionar el flujo de autenticación. La función `dependencies.get_current_active_user` se utiliza como dependencia en las rutas protegidas para verificar la validez del token y asegurar que el usuario esté activo.
+
 ## Estructura del Proyecto
 
 El proyecto está organizado en las siguientes carpetas:
