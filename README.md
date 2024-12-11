@@ -133,9 +133,6 @@ El proyecto está organizado en las siguientes carpetas:
 
 La API está documentada con Swagger UI, accesible en la ruta `/docs`. La documentación proporciona información detallada sobre cada endpoint, incluyendo los parámetros de entrada, los códigos de respuesta y ejemplos de uso.
 
-## Despliegue
-
-
 ## Tecnologías Utilizadas
 
 * **FastAPI:** Framework web de alto rendimiento para construir APIs con Python.
