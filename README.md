@@ -1,4 +1,5 @@
 # Sistema de Gestión de Información Escolar UPIIZ
+**Link al video de demostración de los endpoints:** https://youtu.be/wp8pQdh5F-k
 
 Este proyecto implementa una API RESTful para la gestión de información de estudiantes, profesores y materias de la UPIIZ.  Utiliza FastAPI como framework, MongoDB como base de datos y AWS S3 para el almacenamiento de fotos de los alumnos.
 
